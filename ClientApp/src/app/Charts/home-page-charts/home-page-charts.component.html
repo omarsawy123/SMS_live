@@ -1,0 +1,22 @@
+<div class="container section">
+  <div class="row">
+
+    <div class="card" *ngIf="students" style="width: 50%;">
+      <h5 class="card-header" (click)="getAreas(students)">
+        <i class="fas fa-caret-down float-right"></i>Areas</h5>
+      <div class="card-body">
+        <canvas class="" id="myChart"></canvas>
+      </div>
+    </div>
+
+
+    <div class="card" *ngIf="students" style="width: 50%;">
+      <h5 class="card-header" (click)="getAreas(students)">
+        <i class="fas fa-caret-down float-right"></i>Grades</h5>
+      <div class="card-body">
+        <canvas class="" id="myChart2"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
