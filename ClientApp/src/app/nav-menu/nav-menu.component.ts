@@ -7,5 +7,13 @@ import { Component, HostListener } from '@angular/core';
 })
 export class NavMenuComponent {
 
+  toggled: boolean = true;
+  toggle_style: string = "sidebar"
+
+  toggle() {
+    this.toggled = !this.toggled;
+  }
+
+
 }
 

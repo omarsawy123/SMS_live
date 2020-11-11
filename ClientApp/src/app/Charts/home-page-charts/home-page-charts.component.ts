@@ -19,9 +19,8 @@ export class HomePageChartsComponent implements OnInit {
 
   ngOnInit() {
 
-    this._services.getStudents().subscribe(data => this.students = data)
-
-
+    this._services.getStudents().subscribe(data => this.students = data, () => console.log("error"),
+      () => this.getAreas(this.students))
 
   }
 
@@ -59,27 +58,27 @@ export class HomePageChartsComponent implements OnInit {
     var myChart = new Chart("myChart", {
       type: 'doughnut',
       data: {
-        // labels: areaNames,
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: areaNames.slice(0, 6),
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         datasets: [{
           label: 'Students in Area ',
-          data: [12, 19, 3, 5, 2, 3],
-          // data: areasCount,
+          // data: [12, 19, 3, 5, 2, 3],
+          data: areasCount.slice(0, 6),
           backgroundColor: [
-            "#f56954",
+            '#f56954',
             '#00a65a',
             '#f39c12',
             '#00c0ef',
             '#3c8dbc',
-            '#d2d6de'
+            '#d2d6de',
           ],
           borderColor: [
-            "#f56954",
+            '#f56954',
             '#00a65a',
             '#f39c12',
             '#00c0ef',
             '#3c8dbc',
-            '#d2d6de'
+            '#d2d6de',
           ],
           borderWidth: 1
         }]
@@ -87,41 +86,90 @@ export class HomePageChartsComponent implements OnInit {
     });
 
     var myChart2 = new Chart("myChart2", {
-      type: 'bar',
+      type: 'doughnut',
       data: {
+        labels: areaNames.slice(0, 6),
         // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        labels: areaNames,
         datasets: [{
-          label: '# of Grades',
+          label: 'Students in Area ',
           // data: [12, 19, 3, 5, 2, 3],
-          data: areasCount,
+          data: areasCount.slice(0, 6),
           backgroundColor: [
-            "#f56954",
+            '#f56954',
             '#00a65a',
             '#f39c12',
             '#00c0ef',
             '#3c8dbc',
-            '#d2d6de'
+            '#d2d6de',
           ],
           borderColor: [
-            "#f56954",
+            '#f56954',
             '#00a65a',
             '#f39c12',
             '#00c0ef',
             '#3c8dbc',
-            '#d2d6de'
+            '#d2d6de',
           ],
           borderWidth: 1
         }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
+      }
+    });
+    var myChart3 = new Chart("myChart3", {
+      type: 'doughnut',
+      data: {
+        labels: areaNames.slice(0, 6),
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'Students in Area ',
+          // data: [12, 19, 3, 5, 2, 3],
+          data: areasCount.slice(0, 6),
+          backgroundColor: [
+            '#f56954',
+            '#00a65a',
+            '#f39c12',
+            '#00c0ef',
+            '#3c8dbc',
+            '#d2d6de',
+          ],
+          borderColor: [
+            '#f56954',
+            '#00a65a',
+            '#f39c12',
+            '#00c0ef',
+            '#3c8dbc',
+            '#d2d6de',
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+    var myChart4 = new Chart("myChart4", {
+      type: 'doughnut',
+      data: {
+        labels: areaNames.slice(0, 6),
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'Students in Area ',
+          // data: [12, 19, 3, 5, 2, 3],
+          data: areasCount.slice(0, 6),
+          backgroundColor: [
+            '#f56954',
+            '#00a65a',
+            '#f39c12',
+            '#00c0ef',
+            '#3c8dbc',
+            '#d2d6de',
+          ],
+          borderColor: [
+            '#f56954',
+            '#00a65a',
+            '#f39c12',
+            '#00c0ef',
+            '#3c8dbc',
+            '#d2d6de',
+          ],
+          borderWidth: 1
+        }]
       }
     });
 

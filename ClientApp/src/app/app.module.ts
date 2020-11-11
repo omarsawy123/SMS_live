@@ -45,7 +45,7 @@ const approutes:Routes=[
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forRoot(approutes)
+    RouterModule.forRoot(approutes),
   ],
   providers: [StudentServeices],
   bootstrap: [AppComponent]
