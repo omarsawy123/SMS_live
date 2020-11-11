@@ -1,5 +1,5 @@
  <!-- Navigation -->
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" style="height: 50px;" id="mainNav">
+ <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" style="height: 50px;" id="mainNav">
    <div class="container">
      <a class="navbar-brand" href="#page-top">SMS</a>
      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -13,30 +13,42 @@
        </ul>
      </div>
    </div>
- </nav>
+ </nav> -->
 
 
 
  <div class="wrapper">
    <!-- Sidebar -->
    <nav id="sidebar" *ngIf="toggled">
-     <div class="sidebar-header " >
-       <h3>SMS</h3>
+     <div class="sidebar-header ">
+       <h3 style="font-family: 'Lobster', cursive; cursor: pointer;" [routerLink]="['/charts']"
+         routerLinkActive="router-link-active">SMS</h3>
      </div>
      <ul class="list-unstyled components">
-       <p class="text-primary">MAIN NAVIGATION</p>
+       <div class="row">
+         <div class="col-4">
+           <img src="../../assets/images/User/user2.jpg" class="user-img">
+         </div>
+         <div class="col-8">
+           <p style="margin-bottom: -45px;
+           margin-top: -15px;
+           margin-left: -40px;">Alexander Pierce</p><br>
+           <p style="margin-left: -50px;"><i class="fa fa-circle text-success" style="font-size: 10px;"></i>online</p>
+         </div>
+
+       </div>
        <li class="active">
-         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Students</a>
          <ul class="collapse list-unstyled" id="homeSubmenu">
            <li>
-             <a href="#">Home 1</a>
+             <a [routerLink]="['/students']" routerLinkActive="router-link-active">Student Affairs</a>
            </li>
            <li>
-             <a href="#">Home 2</a>
+             <a href="#">Secretary Reports</a>
            </li>
-           <li>
+           <!-- <li>
              <a href="#">Home 3</a>
-           </li>
+           </li> -->
          </ul>
        </li>
        <li>
@@ -72,9 +84,6 @@
          </button>
        </div>
      </nav>
-     <app-home-page-charts></app-home-page-charts>
+     <router-outlet></router-outlet>
    </div>
  </div>
-
-
- 

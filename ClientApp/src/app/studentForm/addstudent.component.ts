@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IStudent } from '../students/models/IStudent'
@@ -13,6 +13,7 @@ export class AddstudentComponent implements OnInit {
 
 
   studentForm: FormGroup;
+  name="omar";
   student: IStudent;
   students: IStudent[];
 
@@ -26,12 +27,12 @@ export class AddstudentComponent implements OnInit {
 
     this.studentForm = this.fb.group({
       nameFr: ['', [Validators.required, Validators.minLength(5)]],
-      nameAr: ['', [Validators.required, Validators.minLength(5)]],
+      nameGr: ['', [Validators.required, Validators.minLength(5)]],
       dateOfBirth: ['', [Validators.required]],
-      religionId:[''],
-      locationOfBirth:[''],
-      nationalityId:[''],
-      remarks:[''],
+      religionId: [''],
+      locationOfBirth: [''],
+      nationalityId: [''],
+      remarks: [''],
       fatherName: ['', [Validators.required]],
       motherName: ['', [Validators.required]],
       telephone: ['', [Validators.required, Validators.pattern("^[0-9]*$")]]
@@ -40,17 +41,19 @@ export class AddstudentComponent implements OnInit {
     this._services.getStudents().subscribe(data => this.students = data);
   }
 
-  saveStudent(form) {
 
-    this.student = form.value;
-    this.student.studentId = this.students[this.students.length - 1].studentId + 1;
-    this._services.postStudent(this.student).subscribe((data: IStudent) => {
-      console.log(this.student),
-        this.studentForm.reset(),
-        this._router.navigate(['/students'])
-    });
+  @Input()
+  saveStudent(name) {
 
-   
+    // this.student = form.value;
+    // this.student.studentId = this.students[this.students.length - 1].studentId + 1;
+    // this._services.postStudent(this.student).subscribe((data: IStudent) => {
+    //   console.log(this.student),
+    //     this.studentForm.reset(),
+    //     this._router.navigate(['/students'])
+    // });
+
+    console.log("success!!!" + name);
 
   }
 

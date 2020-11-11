@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-6 form-group">
           <label for="name" class="control-label" style="font-size: 18px;">Name</label>
-          <input id="name" class=" form-control" formControlName="nameFr" type="text" minlength="5" required>
+          <input placeholder="Name" id="name" class=" form-control" formControlName="nameFr" type="text" minlength="5" required>
           <div *ngIf="studentForm.get('nameFr').errors && (studentForm.get('nameFr').touched||
             studentForm.get('nameFr').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('nameFr').hasError('required')" class="text-danger">
@@ -20,14 +20,14 @@
           </div>
         </div>
         <div class="col-6 form-group">
-          <label for="nameAr" class="control-label" style="font-size: 18px;">Name Arabic</label>
-          <input id="nameAr" class=" form-control" formControlName="nameAr" type="text" minlength="5">
-          <div *ngIf="studentForm.get('nameAr').errors && (studentForm.get('nameAr').touched||
-              studentForm.get('nameAr').dirty) " class="text-danger">
-            <small *ngIf="studentForm.get('nameAr').hasError('required')" class="text-danger">
-              Arabic Name is required
+          <label for="nameGr" class="control-label" style="font-size: 18px;">German Name</label>
+          <input placeholder="NameGr" id="nameGr" class=" form-control" formControlName="nameGr" type="text" minlength="5">
+          <div *ngIf="studentForm.get('nameGr').errors && (studentForm.get('nameGr').touched||
+              studentForm.get('nameGr').dirty) " class="text-danger">
+            <small *ngIf="studentForm.get('nameGr').hasError('required')" class="text-danger">
+              German Name is required
             </small>
-            <small *ngIf="studentForm.get('nameAr').hasError('minlength')" class="text-danger">
+            <small *ngIf="studentForm.get('nameGr').hasError('minlength')" class="text-danger">
               Name is too short
             </small>
           </div>
@@ -48,7 +48,7 @@
         </div>
         <div class="col-6 form-group">
           <label for="religionId" class="control-label" style="font-size: 18px;">Religion</label>
-          <select id="religionId" class=" form-control" formControlName="religionId" >
+          <select aria-placeholder="Religion" id="religionId" class=" form-control" formControlName="religionId" >
             <option>Muslim</option>
             <option>Christian</option>
             <option>Other</option>
@@ -129,6 +129,6 @@
       </div> -->
     </div>
     <!-- {{studentForm.value|json}} -->
-    <button type="button" [disabled]="studentForm.invalid" type="submit" class="btn btn-md btn-primary">Save</button>
+    <!-- <button type="button" [disabled]="studentForm.invalid" type="submit" class="btn btn-md btn-primary">Save</button> -->
   </form>
 </div>

@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddstudentComponent } from 'src/app/studentForm/addstudent.component';
 import { IStudent } from '../models/IStudent';
 import { StudentServeices } from '../services/studentServices';
 
 @Component({
   selector: 'app-students-list',
   templateUrl: './students-list.component.html',
-  styleUrls: ['./students-list.component.css']
+  styleUrls: ['./students-list.component.css'],
 })
 export class StudentsListComponent implements OnInit {
 
@@ -38,5 +39,8 @@ export class StudentsListComponent implements OnInit {
     this.showChartsClicked=!this.showChartsClicked
     console.log(this.showChartsClicked)
   }
+
+
+ 
 
 }

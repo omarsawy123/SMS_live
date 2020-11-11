@@ -11191,7 +11191,7 @@ header.masthead h1 {
 
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
+  /* border-bottom: 1px solid #47748b; */
 }
 
 #sidebar ul p {
@@ -11207,7 +11207,7 @@ header.masthead h1 {
 
 #sidebar ul li a:hover {
   color: #7386D5;
-  background: #fff;
+  background: #1e282c;
 }
 
 #sidebar ul li.active>a,

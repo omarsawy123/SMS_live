@@ -1,10 +1,29 @@
+#sidebar {
+  background-color: #222d32;
+}
 
-
+.user-img {
+  width: 100%;
+  max-width: 45px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-top: -5px;
+}
 
 a.navbar-brand {
   white-space: normal;
   text-align: center;
+
   word-break: break-all;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 html {
@@ -20,4 +39,3 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
-
