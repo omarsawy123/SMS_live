@@ -1,21 +1,12 @@
 <div class=" container  section">
-  <!-- <div class="row">
-
-    <button class="btn btn-info" (click)="showCharts()">Charts</button>
-    <button class="btn btn-danger" (click)="showTables()">Tables</button>
-
-  </div> -->
   <div class="">
-    <!-- <a class="btn btn-primary float-right mb-4" [routerLink]="['/students/add']"
-      routerLinkActive="router-link-active">Add
-      Student</a> -->
-
+    
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mb-4" style="float: right;" data-toggle="modal"
       data-target="#exampleModal">
-      Add Student
+      Add Student {{header}}
     </button>
-
+    <h4>{{header}} Class</h4>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
@@ -49,9 +40,9 @@
         </div>
       </div>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
+    <table class="table table-striped">
+      <thead class=" thead-dark">
+        <tr role="row">
           <th scope="col">#</th>
           <th scope="col">NameAr</th>
           <th scope="col">NameFr</th>
@@ -61,12 +52,18 @@
       </thead>
       <tbody>
         <ng-container *ngIf="students">
-          <tr *ngFor="let student of students" (click)="OnStudentClick(student.studentId)" style="cursor: pointer;">
+
+          <tr *ngFor="let stud of students">
+            <th scope="row" *ngIf="stud.toLowerCase().includes(header.toLowerCase())">
+              {{stud}}
+            </th>
+          </tr>
+          <!-- <tr *ngFor="let student of students" (click)="OnStudentClick(student.studentId)" style="cursor: pointer;">
             <th scope="row"> {{student.studentId}} </th>
             <td>{{student.nameAr}}</td>
             <td>{{student.nameFr}}</td>
             <td>{{student.dateOfBirth}}</td>
-          </tr>
+          </tr> -->
         </ng-container>
         <ng-container *ngIf="!students">
           <h3>Loading...</h3>

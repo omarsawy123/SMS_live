@@ -1,0 +1,16 @@
+.section {
+  margin-top: 1%;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.card-block {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.card-header{
+    font-size: 22px; 
+    cursor: pointer;
+}
+
+

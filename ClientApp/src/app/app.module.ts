@@ -12,15 +12,19 @@ import { SelectorComponent } from './Selector/selector.component';
 import { StudentDetailsComponent } from './students/studentView/student-details.component';
 import { AddstudentComponent } from './studentForm/addstudent.component';
 import { HomePageChartsComponent } from './Charts/home-page-charts/home-page-charts.component';
+import { HomePageComponent } from './Home/home-page.component';
 
 
 
 const approutes: Routes = [
+  { path: 'home', component:HomePageComponent },
   { path: 'charts', component: HomePageChartsComponent },
   { path: 'students', component: StudentsListComponent },
   { path: 'students/add', component: AddstudentComponent },
   { path: 'students/:id', component: StudentDetailsComponent },
-  { path: '', redirectTo: '/charts', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+
 
 ]
 
@@ -33,7 +37,8 @@ const approutes: Routes = [
     SelectorComponent,
     StudentDetailsComponent,
     AddstudentComponent,
-    HomePageChartsComponent
+    HomePageChartsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

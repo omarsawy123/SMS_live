@@ -11206,7 +11206,7 @@ header.masthead h1 {
 }
 
 #sidebar ul li a:hover {
-  color: #7386D5;
+  color: #ffffff;
   background: #1e282c;
 }
 
@@ -11231,7 +11231,8 @@ a[data-toggle="collapse"] {
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #6d7fcc;
+  border-bottom: 1px solid #222d32;
+  background: #374850;
 }
 
 ul.CTAs {
