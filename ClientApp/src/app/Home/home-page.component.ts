@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
 
   classClicked: boolean = false;
-  className: string = "";
+  className: string = "KG";
 
   constructor() { }
 
@@ -21,6 +21,7 @@ export class HomePageComponent implements OnInit {
     }
     else {
       this.className = className;
+      
     }
   }
 

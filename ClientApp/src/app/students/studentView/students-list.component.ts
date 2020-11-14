@@ -13,24 +13,19 @@ export class StudentsListComponent implements OnInit {
 
   // students: IStudent[];
   students = ["Kga", "Kgb", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
+  selectedTable = []
 
-  showKGClass: boolean = false;
-  showPrimaryClass: boolean = false;
-  showMiddleClass: boolean = false;
-  showHighClass: boolean = false;
+  searchTerm: string = "";
+  selectedClass: string = "All";
+
 
   @Input()
   header = "";
-
-  showTablesClicked: boolean = false;
-  showChartsClicked: boolean = false;
 
 
   constructor(private _services: StudentServeices, private _router: Router) { }
 
   ngOnInit() {
-
-    // this._services.getStudents().subscribe(data => this.students = data);
 
   }
 
@@ -43,15 +38,6 @@ export class StudentsListComponent implements OnInit {
 
 
 
-  showTables() {
-    this.showTablesClicked = !this.showTablesClicked
-    console.log(this.showTablesClicked)
-  }
-
-  showCharts() {
-    this.showChartsClicked = !this.showChartsClicked
-    console.log(this.showChartsClicked)
-  }
 
 
 
