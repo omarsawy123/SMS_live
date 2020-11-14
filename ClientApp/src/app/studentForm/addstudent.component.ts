@@ -26,13 +26,13 @@ export class AddstudentComponent implements OnInit {
   ngOnInit() {
 
     this.studentForm = this.fb.group({
-      nameFr: ['', [Validators.required, Validators.minLength(5)]],
-      nameGr: ['', [Validators.required, Validators.minLength(5)]],
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      nameAr: ['', [Validators.required, Validators.minLength(5)]],
       dateOfBirth: ['', [Validators.required]],
-      religionId: [''],
+      religion: [''],
       locationOfBirth: [''],
       nationalityId: [''],
-      remarks: [''],
+      notes: [''],
       fatherName: ['', [Validators.required]],
       motherName: ['', [Validators.required]],
       telephone: ['', [Validators.required, Validators.pattern("^[0-9]*$")]]

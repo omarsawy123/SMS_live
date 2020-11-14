@@ -7,27 +7,27 @@
       <!--First Line-->
       <div class="row">
         <div class="col-6 form-group">
-          <label for="name" class="control-label" style="font-size: 18px;">Name</label>
-          <input placeholder="Name" id="name" class=" form-control" formControlName="nameFr" type="text" minlength="5" required>
-          <div *ngIf="studentForm.get('nameFr').errors && (studentForm.get('nameFr').touched||
-            studentForm.get('nameFr').dirty) " class="text-danger">
-            <small *ngIf="studentForm.get('nameFr').hasError('required')" class="text-danger">
+          <!-- <label for="name" class="control-label" style="font-size: 18px;">Name</label> -->
+          <input placeholder="Name" id="name" class=" form-control input-field" formControlName="name" type="text" minlength="5" required>
+          <div *ngIf="studentForm.get('name').errors && (studentForm.get('name').touched||
+            studentForm.get('name').dirty) " class="text-danger">
+            <small *ngIf="studentForm.get('name').hasError('required')" class="text-danger">
               Name is required
             </small>
-            <small *ngIf="studentForm.get('nameFr').hasError('minlength')" class="text-danger">
+            <small *ngIf="studentForm.get('name').hasError('minlength')" class="text-danger">
               Name is too short
             </small>
           </div>
         </div>
         <div class="col-6 form-group">
-          <label for="nameGr" class="control-label" style="font-size: 18px;">German Name</label>
-          <input placeholder="NameGr" id="nameGr" class=" form-control" formControlName="nameGr" type="text" minlength="5">
-          <div *ngIf="studentForm.get('nameGr').errors && (studentForm.get('nameGr').touched||
-              studentForm.get('nameGr').dirty) " class="text-danger">
-            <small *ngIf="studentForm.get('nameGr').hasError('required')" class="text-danger">
+          <!-- <label for="nameAr" class="control-label" style="font-size: 18px;">German Name</label> -->
+          <input placeholder="Name Arabic"  id="nameAr" class="input-field form-control" formControlName="nameAr" type="text" minlength="5">
+          <div *ngIf="studentForm.get('nameAr').errors && (studentForm.get('nameAr').touched||
+              studentForm.get('nameAr').dirty) " class="text-danger">
+            <small *ngIf="studentForm.get('nameAr').hasError('required')" class="text-danger">
               German Name is required
             </small>
-            <small *ngIf="studentForm.get('nameGr').hasError('minlength')" class="text-danger">
+            <small *ngIf="studentForm.get('nameAr').hasError('minlength')" class="text-danger">
               Name is too short
             </small>
           </div>
@@ -47,15 +47,15 @@
           </div>
         </div>
         <div class="col-6 form-group">
-          <label for="religionId" class="control-label" style="font-size: 18px;">Religion</label>
-          <select aria-placeholder="Religion" id="religionId" class=" form-control" formControlName="religionId" >
+          <label for="religion" class="control-label" style="font-size: 18px;">Religion</label>
+          <select aria-placeholder="Religion" id="religion" class=" form-control" formControlName="religion" >
             <option>Muslim</option>
             <option>Christian</option>
             <option>Other</option>
           </select>
-          <!-- <div *ngIf="studentForm.get('religionId').errors && (studentForm.get('religionId').touched||
-              studentForm.get('religionId').dirty) " class="text-danger">
-            <small *ngIf="studentForm.get('religionId').hasError('required')" class="text-danger">
+          <!-- <div *ngIf="studentForm.get('religion').errors && (studentForm.get('religion').touched||
+              studentForm.get('religion').dirty) " class="text-danger">
+            <small *ngIf="studentForm.get('religion').hasError('required')" class="text-danger">
               Religion is required
             </small>
           </div> -->
@@ -65,8 +65,8 @@
       <!--Third Line-->
       <div class="row mt-4">
         <div class="col-6 form-group">
-          <label for="locationOfBirth" class="control-label" style="font-size: 18px;">Location of Birth</label>
-          <input id="locationOfBirth" class=" form-control" formControlName="locationOfBirth" type="text" required>
+          <!-- <label for="locationOfBirth" class="control-label" style="font-size: 18px;">Location of Birth</label> -->
+          <input placeholder="Location" id="locationOfBirth" class="input-field form-control" formControlName="locationOfBirth" type="text" required>
           <div *ngIf="studentForm.get('locationOfBirth').errors && (studentForm.get('locationOfBirth').touched||
               studentForm.get('locationOfBirth').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('locationOfBirth').hasError('required')" class="text-danger">
@@ -75,8 +75,8 @@
           </div>
         </div>
         <div class="col-6 form-group">
-          <label for="nationalityId" class="control-label" style="font-size: 18px;">Nationality Id</label>
-          <input id="nationalityId" class=" form-control" formControlName="nationalityId" type="text" required>
+          <!-- <label for="nationalityId" class="control-label" style="font-size: 18px;">Nationality Id</label> -->
+          <input placeholder="NationalityID" id="nationalityId" class="input-field form-control" formControlName="nationalityId" type="text" required>
           <div *ngIf="studentForm.get('nationalityId').errors && (studentForm.get('nationalityId').touched||
               studentForm.get('nationalityId').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('nationalityId').hasError('required')" class="text-danger">
@@ -89,8 +89,8 @@
       <!--Fourth Line-->
       <div class="row mt-4">
         <div class="col-6 form-group">
-          <label for="telephone" class="control-label" style="font-size: 18px;">telephone</label>
-          <input id="telephone" class=" form-control" formControlName="telephone" type="text">
+          <!-- <label for="telephone" class="control-label" style="font-size: 18px;">telephone</label> -->
+          <input placeholder="Telephone" id="telephone" class="input-field form-control" formControlName="telephone" type="text">
           <div *ngIf="studentForm.get('telephone').errors && (studentForm.get('telephone').touched||
               studentForm.get('telephone').dirty) " class="text-danger" required>
             <small *ngIf="studentForm.get('telephone').hasError('required')" class="text-danger">

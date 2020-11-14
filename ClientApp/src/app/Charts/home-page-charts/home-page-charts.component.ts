@@ -38,7 +38,7 @@ export class HomePageChartsComponent implements OnInit {
     let religionNames = [];
 
     ListStudents.forEach(stud => {
-      ListofReligions.push(stud.religionId);
+      ListofReligions.push(stud.religion);
     });
 
     ListofReligions.forEach(rel => {
@@ -54,12 +54,72 @@ export class HomePageChartsComponent implements OnInit {
     });
 
     var myChart = new Chart("myChart2", {
-      type: 'bar',
+      type: 'doughnut',
       data: {
-        labels: ['Catholicism', 'Protestantism ', 'Eastern Orthodoxy', 'Muslim', 'Other'],
+        labels: religionNames,
         datasets: [{
           label: '# Religion',
-          data: [15, 10, 9, 14, 3],
+          data: religionCount,
+          backgroundColor: [
+            '#f56954',
+            '#00a65a',
+            '#f39c12',
+            '#00c0ef',
+            '#3c8dbc',
+            '#d2d6de',
+          ],
+          borderColor: [
+            '#f56954',
+            '#00a65a',
+            '#f39c12',
+            '#00c0ef',
+            '#3c8dbc',
+            '#d2d6de',
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+  }
+
+  getAreas(ListStudents: IStudent[]) {
+
+    let listOfAreas = []
+    let seen = []
+    let result = []
+    let areaNames = []
+    let areasCount = []
+
+    ListStudents.forEach(stud => {
+      if (stud.area != null) {
+        listOfAreas.push(stud.area);
+      }
+    });
+
+    listOfAreas.forEach(areaID => {
+
+      if (!seen.includes(areaID)) {
+        result.push(listOfAreas.filter(s => s == areaID))
+        seen.push(areaID);
+      }
+
+
+    });
+
+    result.forEach(areaName => {
+      areasCount.push(areaName.length)
+      areaNames.push(areaName[0])
+    });
+
+    var myChart = new Chart("myChart", {
+      type: 'bar',
+      data: {
+        labels: areaNames.slice(0, 6),
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'Students in Area ',
+          // data: [12, 19, 3, 5, 2, 3],
+          data: areasCount.slice(0, 6),
           backgroundColor: [
             '#f56954',
             '#00a65a',
@@ -89,66 +149,7 @@ export class HomePageChartsComponent implements OnInit {
         }
       }
     });
-  }
 
-  getAreas(ListStudents: IStudent[]) {
-
-    let listOfAreas = []
-    let seen = []
-    let result = []
-    let areaNames = []
-    let areasCount = []
-
-    ListStudents.forEach(stud => {
-      if (stud.areaId != null) {
-        listOfAreas.push(stud.areaId);
-      }
-    });
-
-    listOfAreas.forEach(areaID => {
-
-      if (!seen.includes(areaID)) {
-        result.push(listOfAreas.filter(s => s == areaID))
-        seen.push(areaID);
-      }
-
-
-    });
-
-    result.forEach(areaName => {
-      areasCount.push(areaName.length)
-      areaNames.push(areaName[0])
-    });
-
-    var myChart = new Chart("myChart", {
-      type: 'doughnut',
-      data: {
-        labels: areaNames.slice(0, 6),
-        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: 'Students in Area ',
-          // data: [12, 19, 3, 5, 2, 3],
-          data: areasCount.slice(0, 6),
-          backgroundColor: [
-            '#f56954',
-            '#00a65a',
-            '#f39c12',
-            '#00c0ef',
-            '#3c8dbc',
-            '#d2d6de',
-          ],
-          borderColor: [
-            '#f56954',
-            '#00a65a',
-            '#f39c12',
-            '#00c0ef',
-            '#3c8dbc',
-            '#d2d6de',
-          ],
-          borderWidth: 1
-        }]
-      }
-    });
 
     // var myChart2 = new Chart("myChart2", {
     //   type: 'doughnut',

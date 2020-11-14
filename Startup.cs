@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SMS.Models;
+using SMS.New_Models;
 
 namespace SMS
 {
@@ -32,7 +32,7 @@ namespace SMS
                     });
             });
 
-                services.AddDbContext<DEV_SMS_ver2Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+                services.AddDbContext<Students_Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
 
 
 

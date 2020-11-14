@@ -11,8 +11,8 @@ import { StudentServeices } from '../services/studentServices';
 export class StudentsListComponent implements OnInit {
 
 
-  // students: IStudent[];
-  students = ["Kga", "Kgb", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
+  students: IStudent[];
+  // students = ["Kga", "Kgb", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
   selectedTable = []
 
   searchTerm: string = "";
@@ -27,11 +27,14 @@ export class StudentsListComponent implements OnInit {
 
   ngOnInit() {
 
+    this._services.getStudents().subscribe(data => this.students = data)
+
   }
 
   OnStudentClick(id: number) {
 
-    this._router.navigate(['/students/' + id])
+    // this._router.navigate(['/students/' + id])
+    console.log(id)
   }
 
 

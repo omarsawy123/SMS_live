@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { FullCalendarModule } from '@fullcalendar/angular';
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+// import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 
 
 import { AppComponent } from './app.component';
@@ -22,6 +24,7 @@ import { CalenderComponentComponent } from './Calender/calender-component.compon
 const approutes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'charts', component: HomePageChartsComponent },
+  { path: 'calender', component: CalenderComponentComponent },
   { path: 'students', component: StudentsListComponent },
   { path: 'students/add', component: AddstudentComponent },
   { path: 'students/:id', component: StudentDetailsComponent },
@@ -30,6 +33,11 @@ const approutes: Routes = [
 
 
 ]
+
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin
+]);
 
 
 @NgModule({

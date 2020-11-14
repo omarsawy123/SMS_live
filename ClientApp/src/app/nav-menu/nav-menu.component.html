@@ -21,7 +21,7 @@
    <!-- Sidebar -->
    <nav id="sidebar" *ngIf="toggled">
      <div class="sidebar-header ">
-       <h3 style="font-family: 'Lobster', cursive; cursor: pointer;" [routerLink]="['/charts']"
+       <h3 style="font-family: 'Lobster', cursive; cursor: pointer;" [routerLink]="['/home']"
          routerLinkActive="router-link-active">SMS</h3>
      </div>
      <ul class="list-unstyled components">
@@ -68,6 +68,9 @@
            </li>
          </ul>
        </li>
+       <li>
+        <a [routerLink]="['/calender']" routerLinkActive="router-link-active" >Calender</a>
+      </li>
        <li>
          <a href="#">Portfolio</a>
        </li>

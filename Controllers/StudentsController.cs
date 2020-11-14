@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SMS.Models;
+using SMS.New_Models;
 
 namespace SMS.Controllers
 {
@@ -14,9 +14,9 @@ namespace SMS.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
-        private readonly DEV_SMS_ver2Context _context;
+        private readonly Students_Context _context;
 
-        public StudentsController(DEV_SMS_ver2Context context)
+        public StudentsController(Students_Context context)
         {
             _context = context;
         }
@@ -24,24 +24,24 @@ namespace SMS.Controllers
         // GET: api/Students
         [EnableCors("Policy1")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TblStudents>>> GetTblStudents()
+        public async Task<ActionResult<IEnumerable<Students>>> GetStudents()
         {
-            return await _context.TblStudents.ToListAsync();
+            return await _context.Students.ToListAsync();
         }
 
         // GET: api/Students/5
         [EnableCors("Policy1")]
         [HttpGet("{id}")]
-        public async Task<ActionResult<TblStudents>> GetTblStudents(int id)
+        public async Task<ActionResult<Students>> GetStudents(int id)
         {
-            var tblStudents = await _context.TblStudents.FindAsync(id);
+            var students = await _context.Students.FindAsync(id);
 
-            if (tblStudents == null)
+            if (students == null)
             {
                 return NotFound();
             }
 
-            return tblStudents;
+            return students;
         }
 
         // PUT: api/Students/5
@@ -49,14 +49,14 @@ namespace SMS.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [EnableCors("Policy1")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTblStudents(int id, TblStudents tblStudents)
+        public async Task<IActionResult> PutStudents(int id, Students students)
         {
-            if (id != tblStudents.StudentId)
+            if (id != students.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(tblStudents).State = EntityState.Modified;
+            _context.Entry(students).State = EntityState.Modified;
 
             try
             {
@@ -64,7 +64,7 @@ namespace SMS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TblStudentsExists(id))
+                if (!StudentsExists(id))
                 {
                     return NotFound();
                 }
@@ -80,36 +80,34 @@ namespace SMS.Controllers
         // POST: api/Students
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [EnableCors("Policy1")]
         [HttpPost]
-        public async Task<ActionResult<TblStudents>> PostTblStudents(TblStudents tblStudents)
+        public async Task<ActionResult<Students>> PostStudents(Students students)
         {
-            _context.TblStudents.Add(tblStudents);
+            _context.Students.Add(students);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTblStudents", new { id = tblStudents.StudentId }, tblStudents);
+            return CreatedAtAction("GetStudents", new { id = students.id }, students);
         }
 
         // DELETE: api/Students/5
-        [EnableCors("Policy1")]
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TblStudents>> DeleteTblStudents(int id)
+        public async Task<ActionResult<Students>> DeleteStudents(int id)
         {
-            var tblStudents = await _context.TblStudents.FindAsync(id);
-            if (tblStudents == null)
+            var students = await _context.Students.FindAsync(id);
+            if (students == null)
             {
                 return NotFound();
             }
 
-            _context.TblStudents.Remove(tblStudents);
+            _context.Students.Remove(students);
             await _context.SaveChangesAsync();
 
-            return tblStudents;
+            return students;
         }
 
-        private bool TblStudentsExists(int id)
+        private bool StudentsExists(int id)
         {
-            return _context.TblStudents.Any(e => e.StudentId == id);
+            return _context.Students.Any(e => e.id == id);
         }
     }
 }
