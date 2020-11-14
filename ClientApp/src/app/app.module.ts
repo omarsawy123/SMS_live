@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -13,11 +15,12 @@ import { StudentDetailsComponent } from './students/studentView/student-details.
 import { AddstudentComponent } from './studentForm/addstudent.component';
 import { HomePageChartsComponent } from './Charts/home-page-charts/home-page-charts.component';
 import { HomePageComponent } from './Home/home-page.component';
+import { CalenderComponentComponent } from './Calender/calender-component.component';
 
 
 
 const approutes: Routes = [
-  { path: 'home', component:HomePageComponent },
+  { path: 'home', component: HomePageComponent },
   { path: 'charts', component: HomePageChartsComponent },
   { path: 'students', component: StudentsListComponent },
   { path: 'students/add', component: AddstudentComponent },
@@ -38,13 +41,15 @@ const approutes: Routes = [
     StudentDetailsComponent,
     AddstudentComponent,
     HomePageChartsComponent,
-    HomePageComponent
+    HomePageComponent,
+    CalenderComponentComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    FullCalendarModule,
     RouterModule.forRoot(approutes),
   ],
   providers: [StudentServeices],

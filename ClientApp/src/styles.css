@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
