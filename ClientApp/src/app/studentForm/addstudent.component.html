@@ -22,6 +22,13 @@
             </small>
           </div>
         </div>
+        <!-- <div class="col-4">
+          <img class=" image" style="width: 45%; margin-left: 15rem;" [src]="photoPath">
+          <input type="file" formControlName="photoPath">
+          <h3>{{photo}}</h3>
+          <h3>{{photoPath}}</h3>
+
+        </div> -->
       </div>
 
       <!--Second Line (Arabic name)-->
@@ -54,7 +61,7 @@
 
       <!--Fourth Line (DateOfBirth / Religion)-->
       <div class="row mt-4">
-        <div class="col-6 form-group">
+        <div *ngIf="CalculateAge(nationalityNumber.value)" class="col-6 form-group">
           <label for="dateOfBirth" class="control-label" style="font-size: 18px;">Date of Birth</label>
           <input id="dateOfBirth" class=" form-control" formControlName="dateOfBirth" type="date">
           <div *ngIf="studentForm.get('dateOfBirth').errors && (studentForm.get('dateOfBirth').touched||
@@ -66,11 +73,28 @@
         </div>
         <div class="col-6 form-group">
           <label for="religion" class="control-label" style="font-size: 18px;">Religion</label>
-          <select aria-placeholder="Religion" id="religion" class=" form-control" formControlName="religion">
+          <select aria-placeholder="Religion" #relegionList id="religion" class=" form-control" formControlName="religion">
             <option>Muslim</option>
             <option>Christian</option>
             <option>Other</option>
           </select>
+          <div class="mt-3" *ngIf="relegionList.value=='Christian'" >
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="religion" type="radio" name="inlineRadioOptions"
+                id="inlineRadio1" value="Orthodoxy">
+              <label class="form-check-label" for="inlineRadio1">Orthodoxy</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="religion" type="radio" name="inlineRadioOptions"
+                id="inlineRadio2" value="Protestantism">
+              <label class="form-check-label" for="inlineRadio2">Protestantism</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="religion" type="radio" name="inlineRadioOptions"
+                id="inlineRadio3" value="Catholicism">
+              <label class="form-check-label" for="inlineRadio3">Catholicism</label>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -89,7 +113,7 @@
         </div>
         <div class="col-6 form-group">
           <!-- <label for="nationalityId" class="control-label" style="font-size: 18px;">Nationality Id</label> -->
-          <input placeholder="NationalityID" id="nationalityId" class="input-field form-control"
+          <input #nationalityNumber placeholder="NationalityID" id="nationalityId" class="input-field form-control"
             formControlName="nationalityId" type="text" required>
           <div *ngIf="studentForm.get('nationalityId').errors && (studentForm.get('nationalityId').touched||
               studentForm.get('nationalityId').dirty) " class="text-danger">
@@ -282,6 +306,7 @@
       </div>
     </div>
 
+    <!--Contact Info-->
     <div style="margin-top: 35px; margin-bottom: 30px;" *ngIf="contactTab">
       <div class="row">
         <table class="table table-borderless col-6">
@@ -452,7 +477,9 @@
       </div>
     </div>
 
-    <!-- {{studentForm.}} -->
+
+
+    {{studentForm.value|json}}
     <!-- <button type="button" [disabled]="studentForm.invalid" type="submit" class="btn btn-md btn-primary">Save</button> -->
   </form>
 </div>

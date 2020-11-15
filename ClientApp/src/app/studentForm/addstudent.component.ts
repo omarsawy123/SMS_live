@@ -13,6 +13,9 @@ export class AddstudentComponent implements OnInit {
 
   classes = ["Kg-a", "Kg-b", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
 
+  photo = "user_default.png";
+  photoPath = "../../assets/images/User/" + this.photo
+
   studentForm: FormGroup;
 
   parentsTab: boolean = true;
@@ -36,9 +39,10 @@ export class AddstudentComponent implements OnInit {
       class: ['', [Validators.required]],
       religion: [''],
       mobile: [''],
-      email:[''],
-      address:[''],
-      area:[''],
+      email: [''],
+      address: [''],
+      area: [''],
+      photoPath: ['../../assets/images/User/' + this.photoPath],
       emergencyContact: [''],
       emergencyPhone: [''],
       locationOfBirth: [''],
@@ -87,6 +91,23 @@ export class AddstudentComponent implements OnInit {
   contactClicked() {
     this.parentsTab = false;
     this.contactTab = true;
+  }
+
+
+  CalculateAge(Id: number) {
+
+    let year = "";
+    let month = "";
+    let day = "";
+
+    let strId = Id.toString();
+    if (strId.length == 14) {
+      if (strId[0] == '2') {
+        year = "19" + strId[1] + strId[2]
+        console.log(year)
+      }
+    }
+
   }
 
 

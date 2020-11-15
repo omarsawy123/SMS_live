@@ -1,26 +1,42 @@
 export interface IStudent {
 
+    //student
     id: number;
     studcode: number;
     studName: string;
-    fatherName: string;
-    motherName: string;
-    class: string;
-    gender: string;
+    studNameAr: string;
     dateOfBirth: string;
-    locationOfBirth: string;
+    class: string;
     religion: string;
-    fatherJob: string;
+    mobile: string;
+    email: string;
     address: string;
-    streetName: string;
     area: string;
-    state: boolean;
-    fatherMobile: string;
-    motherMobile: string;
-    telephone: string;
+    emergencyPhone: string;
+    locationOfBirth: string;
     nationalityId: number;
+    telephone: string;
     notes: string;
-    photoPath:string;
+    photoPath: string;
+    gender: string;
+    streetName: string;
+    state: boolean;
+
+    //Father
+    fatherName: string;
+    fatherJob: string;
+    fatherMobile: string;
+    fatherAddress: string;
+
+    //Mother
+    motherName: string;
+    motherMobile: string;
+    motherEmail: string;
+    motherSchool: string;
+    motherDegree: string;
+    motherGraduationYear: string;
+    motherAddress: string;
+
     // schoolEmail: string;
     // mobile: string;
     // photoFileName: string;
