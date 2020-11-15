@@ -11,9 +11,13 @@ import { StudentServeices } from '../students/services/studentServices';
 })
 export class AddstudentComponent implements OnInit {
 
+  classes = ["Kg-a", "Kg-b", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
 
   studentForm: FormGroup;
-  name="omar";
+
+  parentsTab: boolean = true;
+  contactTab: boolean = false;
+
   student: IStudent;
   students: IStudent[];
 
@@ -26,16 +30,32 @@ export class AddstudentComponent implements OnInit {
   ngOnInit() {
 
     this.studentForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      nameAr: ['', [Validators.required, Validators.minLength(5)]],
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      nameAr: ['', [Validators.required, Validators.minLength(2)]],
       dateOfBirth: ['', [Validators.required]],
+      class: ['', [Validators.required]],
       religion: [''],
+      mobile: [''],
+      email:[''],
+      address:[''],
+      area:[''],
+      emergencyContact: [''],
+      emergencyPhone: [''],
       locationOfBirth: [''],
-      nationalityId: [''],
+      nationalityId: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
+      telephone: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       notes: [''],
       fatherName: ['', [Validators.required]],
+      fatherJob: [''],
+      fatherMobile: [''],
+      fatherAddress: [''],
       motherName: ['', [Validators.required]],
-      telephone: ['', [Validators.required, Validators.pattern("^[0-9]*$")]]
+      motherMobile: [''],
+      motherEmail: [''],
+      motherSchool: [''],
+      motherDegree: [''],
+      motherGraduationYear: [''],
+      motherAddress: ['']
     });
 
     this._services.getStudents().subscribe(data => this.students = data);
@@ -56,5 +76,18 @@ export class AddstudentComponent implements OnInit {
     console.log("success!!!" + name);
 
   }
+
+  parentsClicked() {
+    this.parentsTab = true;
+    this.contactTab = false;
+
+  }
+
+
+  contactClicked() {
+    this.parentsTab = false;
+    this.contactTab = true;
+  }
+
 
 }

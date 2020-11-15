@@ -12,7 +12,7 @@ export class StudentsListComponent implements OnInit {
 
 
   students: IStudent[];
-  // students = ["Kga", "Kgb", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
+  classes = ["Kga", "Kgb", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
   selectedTable = []
 
   searchTerm: string = "";

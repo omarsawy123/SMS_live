@@ -20,6 +20,7 @@ export interface IStudent {
     telephone: string;
     nationalityId: number;
     notes: string;
+    photoPath:string;
     // schoolEmail: string;
     // mobile: string;
     // photoFileName: string;

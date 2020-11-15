@@ -30,6 +30,7 @@ namespace SMS.New_Models
         public string Telephone { get; set; }
         public string NationalityId { get; set; }
         public string Notes { get; set; }
+        public string PhotoPath { get; set; }
 
 
 

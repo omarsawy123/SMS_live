@@ -23,8 +23,8 @@ import { CalenderComponentComponent } from './Calender/calender-component.compon
 
 const approutes: Routes = [
   { path: 'home', component: HomePageComponent },
-  { path: 'charts', component: HomePageChartsComponent },
-  { path: 'calender', component: CalenderComponentComponent },
+  // { path: 'charts', component: HomePageChartsComponent },
+  // { path: 'calender', component: CalenderComponentComponent },
   { path: 'students', component: StudentsListComponent },
   { path: 'students/add', component: AddstudentComponent },
   { path: 'students/:id', component: StudentDetailsComponent },

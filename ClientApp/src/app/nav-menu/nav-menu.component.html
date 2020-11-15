@@ -69,8 +69,8 @@
          </ul>
        </li>
        <li>
-        <a [routerLink]="['/calender']" routerLinkActive="router-link-active" >Calender</a>
-      </li>
+         <a [routerLink]="['/calender']" routerLinkActive="router-link-active">Calender</a>
+       </li>
        <li>
          <a href="#">Portfolio</a>
        </li>
@@ -85,6 +85,12 @@
          <button type="button" id="sidebarCollapse" (click)="toggle()" class="btn btn-info">
            <i class="fas fa-align-left"></i>
          </button>
+         <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+           <strong>Warning!</strong> some Students Are missing Data .
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div> -->
        </div>
      </nav>
      <router-outlet></router-outlet>

@@ -1,14 +1,17 @@
 <div class=" container section">
   <!-- <h3>{{HeaderText}}</h3>
   <hr class="mb-4" /> -->
+
   <form [formGroup]="studentForm" (ngSubmit)="saveStudent(studentForm)">
-    <div class="">
-      
-      <!--First Line-->
+
+    <!--Student Info-->
+    <div class="mb-5">
+      <!--First Line (German name)-->
       <div class="row">
-        <div class="col-6 form-group">
+        <div class="col-8 form-group">
           <!-- <label for="name" class="control-label" style="font-size: 18px;">Name</label> -->
-          <input placeholder="Name" id="name" class=" form-control input-field" formControlName="name" type="text" minlength="5" required>
+          <input placeholder="Vorname" id="name" class=" form-control input-field" formControlName="name" type="text"
+            minlength="2" style="font-size: 30px;border-bottom: 2px solid;" required>
           <div *ngIf="studentForm.get('name').errors && (studentForm.get('name').touched||
             studentForm.get('name').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('name').hasError('required')" class="text-danger">
@@ -19,13 +22,18 @@
             </small>
           </div>
         </div>
+      </div>
+
+      <!--Second Line (Arabic name)-->
+      <div class="row">
         <div class="col-6 form-group">
           <!-- <label for="nameAr" class="control-label" style="font-size: 18px;">German Name</label> -->
-          <input placeholder="Name Arabic"  id="nameAr" class="input-field form-control" formControlName="nameAr" type="text" minlength="5">
+          <input placeholder="Arabic Name" id="nameAr" class="input-field form-control" formControlName="nameAr"
+            type="text" minlength="2">
           <div *ngIf="studentForm.get('nameAr').errors && (studentForm.get('nameAr').touched||
               studentForm.get('nameAr').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('nameAr').hasError('required')" class="text-danger">
-              German Name is required
+              Arabic Name is required
             </small>
             <small *ngIf="studentForm.get('nameAr').hasError('minlength')" class="text-danger">
               Name is too short
@@ -33,12 +41,22 @@
           </div>
         </div>
       </div>
-      
-      <!--Second Line-->
+
+      <!--Third Line (Class)-->
+      <div class="row">
+        <div class="col-4">
+          <label for="class" class="control-label" style="font-size: 18px;">Class</label>
+          <select aria-placeholder="class" id="class" class=" form-control" formControlName="class">
+            <option *ngFor="let cls of classes">{{cls}}</option>
+          </select>
+        </div>
+      </div>
+
+      <!--Fourth Line (DateOfBirth / Religion)-->
       <div class="row mt-4">
         <div class="col-6 form-group">
           <label for="dateOfBirth" class="control-label" style="font-size: 18px;">Date of Birth</label>
-          <input id="dateOfBirth" class=" form-control" formControlName="dateOfBirth" type="date" minlength="5">
+          <input id="dateOfBirth" class=" form-control" formControlName="dateOfBirth" type="date">
           <div *ngIf="studentForm.get('dateOfBirth').errors && (studentForm.get('dateOfBirth').touched||
               studentForm.get('dateOfBirth').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('dateOfBirth').hasError('required')" class="text-danger">
@@ -48,25 +66,20 @@
         </div>
         <div class="col-6 form-group">
           <label for="religion" class="control-label" style="font-size: 18px;">Religion</label>
-          <select aria-placeholder="Religion" id="religion" class=" form-control" formControlName="religion" >
+          <select aria-placeholder="Religion" id="religion" class=" form-control" formControlName="religion">
             <option>Muslim</option>
             <option>Christian</option>
             <option>Other</option>
           </select>
-          <!-- <div *ngIf="studentForm.get('religion').errors && (studentForm.get('religion').touched||
-              studentForm.get('religion').dirty) " class="text-danger">
-            <small *ngIf="studentForm.get('religion').hasError('required')" class="text-danger">
-              Religion is required
-            </small>
-          </div> -->
         </div>
       </div>
 
-      <!--Third Line-->
+      <!--Fifth Line (Location / Nationality)-->
       <div class="row mt-4">
         <div class="col-6 form-group">
           <!-- <label for="locationOfBirth" class="control-label" style="font-size: 18px;">Location of Birth</label> -->
-          <input placeholder="Location" id="locationOfBirth" class="input-field form-control" formControlName="locationOfBirth" type="text" required>
+          <input placeholder="Location" id="locationOfBirth" class="input-field form-control"
+            formControlName="locationOfBirth" type="text" required>
           <div *ngIf="studentForm.get('locationOfBirth').errors && (studentForm.get('locationOfBirth').touched||
               studentForm.get('locationOfBirth').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('locationOfBirth').hasError('required')" class="text-danger">
@@ -76,21 +89,28 @@
         </div>
         <div class="col-6 form-group">
           <!-- <label for="nationalityId" class="control-label" style="font-size: 18px;">Nationality Id</label> -->
-          <input placeholder="NationalityID" id="nationalityId" class="input-field form-control" formControlName="nationalityId" type="text" required>
+          <input placeholder="NationalityID" id="nationalityId" class="input-field form-control"
+            formControlName="nationalityId" type="text" required>
           <div *ngIf="studentForm.get('nationalityId').errors && (studentForm.get('nationalityId').touched||
               studentForm.get('nationalityId').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('nationalityId').hasError('required')" class="text-danger">
               Nationality Id is required
             </small>
+            <small
+              *ngIf="studentForm.get('nationalityId').hasError('minlength')||studentForm.get('nationalityId').hasError('maxlength')"
+              class="text-danger">
+              Wrong Id
+            </small>
           </div>
         </div>
       </div>
 
-      <!--Fourth Line-->
+      <!--Sixth Line (Telephone)-->
       <div class="row mt-4">
         <div class="col-6 form-group">
           <!-- <label for="telephone" class="control-label" style="font-size: 18px;">telephone</label> -->
-          <input placeholder="Telephone" id="telephone" class="input-field form-control" formControlName="telephone" type="text">
+          <input placeholder="Address" id="address" class="input-field form-control" formControlName="address"
+            type="text">
           <div *ngIf="studentForm.get('telephone').errors && (studentForm.get('telephone').touched||
               studentForm.get('telephone').dirty) " class="text-danger" required>
             <small *ngIf="studentForm.get('telephone').hasError('required')" class="text-danger">
@@ -99,36 +119,340 @@
           </div>
         </div>
       </div>
-
-      
-      <!-- <div class=" form-group">
-        <label for="motherName" class="control-label" style="font-size: 18px;">Mother Name</label>
-        <input id="motherName" class=" form-control" formControlName="motherName" type="text" minlength="5">
-        <div *ngIf="studentForm.get('motherName').errors && (studentForm.get('motherName').touched||
-            studentForm.get('motherName').dirty) " class="text-danger">
-          <small *ngIf="studentForm.get('motherName').hasError('required')" class="text-danger">
-            Mother Name is required
-          </small>
-          <small *ngIf="studentForm.get('motherName').hasError('minlength')" class="text-danger">
-            Name is too short
-          </small>
-        </div>
-      </div> -->
-      <!-- <div class=" form-group">
-        <label for="motherName" class="control-label" style="font-size: 18px;">Mother Name</label>
-        <input id="motherName" class=" form-control" formControlName="motherName" type="text" minlength="5">
-        <div *ngIf="studentForm.get('motherName').errors && (studentForm.get('motherName').touched||
-            studentForm.get('motherName').dirty) " class="text-danger">
-          <small *ngIf="studentForm.get('motherName').hasError('required')" class="text-danger">
-            Mother Name is required
-          </small>
-          <small *ngIf="studentForm.get('motherName').hasError('minlength')" class="text-danger">
-            Name is too short
-          </small>
-        </div>
-      </div> -->
     </div>
-    <!-- {{studentForm.value|json}} -->
+
+    <!--Tabs-->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a (click)="parentsClicked()" class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile"
+          role="tab" aria-controls="profile" aria-selected="false">Parents</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="contactClicked()" class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+          aria-controls="contact" aria-selected="false">Contact</a>
+      </li>
+    </ul>
+
+    <!--Parents Info-->
+    <div style="margin-top: 35px; margin-bottom: 30px;" *ngIf="parentsTab">
+      <div class="row">
+        <!--Mother Table-->
+        <table class="table col-6 table-borderless">
+          <tbody>
+            <tr>
+              <td colspan="2" style="width: 100%;">
+                <label class="" style="font-size: 1.625rem;">Mother Info</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="motherName">name</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="motherName" class="input-field form-control"
+                  formControlName="motherName" type="text" minlength="2">
+                <div *ngIf="studentForm.get('motherName').errors && (studentForm.get('motherName').touched||
+                        studentForm.get('motherName').dirty) " class="text-danger">
+                  <small *ngIf="studentForm.get('motherName').hasError('required')" class="text-danger">
+                    Mother Name is required
+                  </small>
+                  <small *ngIf="studentForm.get('motherName').hasError('minlength')" class="text-danger">
+                    Name is too short
+                  </small>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="motherAddress">Address</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="motherAddress" class="input-field form-control"
+                  formControlName="motherAddress" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="motherMobile">Mobile</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="motherMobile" class="input-field form-control"
+                  formControlName="motherMobile" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="motherEmail">Email</label>
+              </td>
+              <td style="width: 100%;"> <input type="email" style="width: 75%;" id="motherEmail"
+                  class="input-field form-control" formControlName="motherEmail" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="width: 100%;">
+                <label class="" style="font-size: 1.625rem;margin-bottom: -5px;">Education</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="motherDegree">Certificate</label>
+              </td>
+              <td style="width: 100%;">
+                <!-- <input style="width: 75%;" id="motherSchool" class="input-field form-control"
+                  formControlName="motherSchool" type="text" minlength="2"> -->
+                <select style="width: 75%;" id="motherDegree" class="input-field form-control"
+                  formControlName="motherSchool" type="text">
+                  <option>Graduate</option>
+                  <option>Bachelor</option>
+                  <option>Master</option>
+                  <option>Doctor</option>
+                  <option>Other</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="motherSchool">School</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="motherSchool" class="input-field form-control"
+                  formControlName="motherSchool" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="motherGraduationYear">Year</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="motherGraduationYear"
+                  class="input-field form-control" formControlName="motherGraduationYear" type="date">
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <!--Father Table-->
+        <table class="table table-borderless col-6">
+          <tbody>
+            <tr>
+              <td colspan="2" style="width: 100%;">
+                <label class="" style="font-size: 1.625rem;">Father Info</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="fatherName">name</label>
+              </td>
+              <td style="width: 100%;"><input style="width: 75%;" id="fatherName" class="input-field form-control"
+                  formControlName="fatherName" type="text" minlength="2">
+                <div *ngIf="studentForm.get('fatherName').errors && (studentForm.get('fatherName').touched||
+                        studentForm.get('fatherName').dirty) " class="text-danger">
+                  <small *ngIf="studentForm.get('fatherName').hasError('required')" class="text-danger">
+                    Father Name is required
+                  </small>
+                  <small *ngIf="studentForm.get('fatherName').hasError('minlength')" class="text-danger">
+                    Name is too short
+                  </small>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="fatherAddress">Address</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="fatherAddress" class="input-field form-control"
+                  formControlName="fatherAddress" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="fatherMobile">Mobile</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="fatherMobile" class="input-field form-control"
+                  formControlName="fatherMobile" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="fatherJob">Job</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="fatherJob" class="input-field form-control"
+                  formControlName="fatherJob" type="text">
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-top: 35px; margin-bottom: 30px;" *ngIf="contactTab">
+      <div class="row">
+        <table class="table table-borderless col-6">
+          <tbody>
+            <tr>
+              <td>
+                <label class="input-label" for="telephone">Telephone</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="telephone" class="input-field form-control"
+                  formControlName="telephone" type="text">
+                <div *ngIf="studentForm.get('telephone').errors && (studentForm.get('telephone').touched||
+              studentForm.get('telephone').dirty) " class="text-danger" required>
+                  <small *ngIf="studentForm.get('telephone').hasError('required')" class="text-danger">
+                    Number is required
+                  </small>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="email">Email</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="email" class="input-field form-control"
+                  formControlName="email" type="email">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="area">Area</label>
+              </td>
+              <td style="width: 100%;">
+                <select style="width: 75%;" id="area" class="input-field form-control" formControlName="area">
+
+                  <option selected="selected" value=""></option>
+                  <option> فيكتوريا</option>
+                  <option>أبيس</option>
+                  <option>ابو سليمان</option>
+                  <option>الإبراهيمية</option>
+                  <option>الأزاريطة</option>
+                  <option>الازاريطة</option>
+                  <option>البطالسة</option>
+                  <option>البيطاش</option>
+                  <option>الجامعة</option>
+                  <option>الجمرك</option>
+                  <option>الحضرة</option>
+                  <option>الحضرة الجديدة</option>
+                  <option>الحضرة القبلية</option>
+                  <option>الرأس السوداء</option>
+                  <option>الرصافة</option>
+                  <option>الرمل</option>
+                  <option>السرايا</option>
+                  <option>السيوف</option>
+                  <option>السيوف بحري</option>
+                  <option>السيوف شماعة</option>
+                  <option> الشاطبي</option>
+                  <option>الشلالات</option>
+                  <option>العامرية</option>
+                  <option>العجمى</option>
+                  <option>العصافرة</option>
+                  <option>العصافرة البحرية</option>
+                  <option>العصافرة بحرى</option>
+                  <option>العصافرة قبلي</option>
+                  <option>العصافره</option>
+                  <option>العطارين</option>
+                  <option>العوايد</option>
+                  <option>الفراعنة</option>
+                  <option>الفلكي</option>
+                  <option>الفيلات- سموحة</option>
+                  <option>القباري</option>
+                  <option>اللبان</option>
+                  <option>المسلة</option>
+                  <option>المطار</option>
+                  <option>المطار السريع</option>
+                  <option>المعمورة الشاطئ</option>
+                  <option>المنتزة</option>
+                  <option>المنتزه</option>
+                  <option>المندرة</option>
+                  <option>المندرة البحرية</option>
+                  <option>المندرة بحرى</option>
+                  <option>المندرة قبلى</option>
+                  <option>المنشية</option>
+                  <option>المنشية الصغرى</option>
+                  <option>الهداية</option>
+                  <option>الورديان</option>
+                  <option>الوزارة</option>
+                  <option>امتداد ش فؤاد</option>
+                  <option>اول المنتزة</option>
+                  <option>باب شرق</option>
+                  <option>باكوس</option>
+                  <option> بولكلى</option>
+                  <option>بيطاش</option>
+                  <option>تفتيش السيوف</option>
+                  <option>ثروت</option>
+                  <option>جاردن سيتي سموحه</option>
+                  <option>جليم</option>
+                  <option>جناكليس</option>
+                  <option>خورشيد</option>
+                  <option>شدى</option>
+                  <option>زيزنيا</option>
+                  <option>زيزينيا</option>
+                  <option>سابا باشا</option>
+                  <option>سان استيفانو</option>
+                  <option>سان ستيفانو</option>
+                  <option>سبورتنج</option>
+                  <option>سبورتنج الصغرى</option>
+                  <option>سبورتنج الكبرى</option>
+                  <option>ستانلي</option>
+                  <option> سموحة</option>
+                  <option>سموحه</option>
+                  <option>سيدي بشر</option>
+                  <option>سيدي بشر الترام</option>
+                  <option>سيدي بشر بحري</option>
+                  <option>سيدى بشر قبلى</option>
+                  <option> سيدي جابر</option>
+                  <option>سيدى جابر الشيخ</option>
+                  <option>سيدى جابر المحطة</option>
+                  <option>سيوف شماعة</option>
+                  <option>شدس</option>
+                  <option>شرق</option>
+                  <option>شوتس</option>
+                  <option>عزبة عبد المنعم رياض</option>
+                  <option>غبريال</option>
+                  <option>غيط العنب</option>
+                  <option>فلمنج</option>
+                  <option>فليمنج</option>
+                  <option>فيكتوريا</option>
+                  <option>كامب شيزار</option>
+                  <option>كفر الدوار</option>
+                  <option>كفر عبده</option>
+                  <option>كليوباترا</option>
+                  <option>كليوباترا الصغرى</option>
+                  <option>كليوباترا المحطة</option>
+                  <option>كليوباترا حمامات</option>
+                  <option>كليوباترا زنانيرى</option>
+                  <option>كوبري الجامعة</option>
+                  <option>كينج مريوط</option>
+                  <option>لوران</option>
+                  <option>مبامى</option>
+                  <option>محرم بك</option>
+                  <option>محطة الرمل</option>
+                  <option>محطة الرمل- العطارين</option>
+                  <option>محطة مصر</option>
+                  <option>مصطفى كامل</option>
+                  <option>مصطفى كامل -كفر عبده</option>
+                  <option>منشا محرم بك</option>
+                  <option>ميامى</option>
+                  <option>وابور المياة</option>
+                  <option>وابور المياه</option>
+
+
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table table-borderless col-6">
+          <tbody>
+            <tr>
+              <td>
+                <label class="input-label" for="emergencyPhone">Emergency Contact</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="emergencyPhone" class="input-field form-control"
+                  formControlName="emergencyPhone" type="text">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- {{studentForm.}} -->
     <!-- <button type="button" [disabled]="studentForm.invalid" type="submit" class="btn btn-md btn-primary">Save</button> -->
   </form>
 </div>
