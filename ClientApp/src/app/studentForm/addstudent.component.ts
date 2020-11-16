@@ -11,7 +11,7 @@ import { StudentServeices } from '../students/services/studentServices';
 })
 export class AddstudentComponent implements OnInit {
 
-  classes = ["Kg-a", "Kg-b", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
+  classes = ["KgA", "KgB", "Primary1", "Primary2", "Middle1", "Middle2", "High1", "High2"];
 
   photo = "user_default.png";
   photoPath = "../../assets/images/User/" + this.photo
@@ -104,11 +104,25 @@ export class AddstudentComponent implements OnInit {
     if (strId.length == 14) {
       if (strId[0] == '2') {
         year = "19" + strId[1] + strId[2]
-        console.log(year)
+
       }
+      if (strId[0] == '3') {
+        year = "20" + strId[1] + strId[2]
+      }
+      month = strId[3] + strId[4]
+      day = strId[5] + strId[6]
     }
+
+    return year + '-' + month + '-' + day
 
   }
 
+
+  readURL(pic: string) {
+
+    let str = pic.split('\\')
+    console.log(str[str.length - 1])
+    return "../../assets/images/User/" + str[str.length - 1]
+  }
 
 }

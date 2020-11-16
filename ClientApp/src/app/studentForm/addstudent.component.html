@@ -22,13 +22,10 @@
             </small>
           </div>
         </div>
-        <!-- <div class="col-4">
-          <img class=" image" style="width: 45%; margin-left: 15rem;" [src]="photoPath">
-          <input type="file" formControlName="photoPath">
-          <h3>{{photo}}</h3>
-          <h3>{{photoPath}}</h3>
-
-        </div> -->
+        <div class="col-4">
+          <img class="image" style="width: 45%; margin-left: 15rem;" [src]="readURL(pic.value)">
+          <input #pic type="file" value="../../assets/images/User/user_default.png" formControlName="photoPath">
+        </div>
       </div>
 
       <!--Second Line (Arabic name)-->
@@ -59,11 +56,13 @@
         </div>
       </div>
 
+
       <!--Fourth Line (DateOfBirth / Religion)-->
       <div class="row mt-4">
-        <div *ngIf="CalculateAge(nationalityNumber.value)" class="col-6 form-group">
+        <div class="col-6 form-group">
           <label for="dateOfBirth" class="control-label" style="font-size: 18px;">Date of Birth</label>
-          <input id="dateOfBirth" class=" form-control" formControlName="dateOfBirth" type="date">
+          <input [value]="CalculateAge(nationalityNumber.value)" id="dateOfBirth" class=" form-control"
+            formControlName="dateOfBirth" type="date">
           <div *ngIf="studentForm.get('dateOfBirth').errors && (studentForm.get('dateOfBirth').touched||
               studentForm.get('dateOfBirth').dirty) " class="text-danger">
             <small *ngIf="studentForm.get('dateOfBirth').hasError('required')" class="text-danger">
@@ -73,12 +72,13 @@
         </div>
         <div class="col-6 form-group">
           <label for="religion" class="control-label" style="font-size: 18px;">Religion</label>
-          <select aria-placeholder="Religion" #relegionList id="religion" class=" form-control" formControlName="religion">
+          <select aria-placeholder="Religion" #relegionList id="religion" class=" form-control"
+            formControlName="religion">
             <option>Muslim</option>
             <option>Christian</option>
             <option>Other</option>
           </select>
-          <div class="mt-3" *ngIf="relegionList.value=='Christian'" >
+          <div class="mt-3" *ngIf="relegionList.value=='Christian'">
             <div class="form-check form-check-inline">
               <input class="form-check-input" formControlName="religion" type="radio" name="inlineRadioOptions"
                 id="inlineRadio1" value="Orthodoxy">
@@ -96,6 +96,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
       <!--Fifth Line (Location / Nationality)-->
@@ -124,6 +125,11 @@
               *ngIf="studentForm.get('nationalityId').hasError('minlength')||studentForm.get('nationalityId').hasError('maxlength')"
               class="text-danger">
               Wrong Id
+            </small>
+          </div>
+          <div>
+            <small>
+              Expected Date of Birth:{{CalculateAge(nationalityNumber.value)}}
             </small>
           </div>
         </div>
