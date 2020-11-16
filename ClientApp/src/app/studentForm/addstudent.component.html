@@ -1,7 +1,6 @@
 <div class=" container section">
   <!-- <h3>{{HeaderText}}</h3>
   <hr class="mb-4" /> -->
-
   <form [formGroup]="studentForm" (ngSubmit)="saveStudent(studentForm)">
 
     <!--Student Info-->
@@ -23,8 +22,9 @@
           </div>
         </div>
         <div class="col-4">
-          <img class="image" style="width: 45%; margin-left: 15rem;" [src]="readURL(pic.value)">
-          <input #pic type="file" value="../../assets/images/User/user_default.png" formControlName="photoPath">
+          <img class="image" style="width: 25%; margin-left: 15rem;" [src]="readURL(pic.value)">
+          <input style="margin-left: 8rem;" #pic type="file" value="../../assets/images/User/user_default.png"
+            formControlName="photoPath">
         </div>
       </div>
 
@@ -154,18 +154,23 @@
     <!--Tabs-->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a (click)="parentsClicked()" class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile"
-          role="tab" aria-controls="profile" aria-selected="false">Parents</a>
+        <a (click)="parentsClicked()" class="nav-link active" id="profile-tab" data-toggle="tab" href="#" role="tab"
+          aria-controls="profile" aria-selected="false">Parents</a>
       </li>
       <li class="nav-item">
-        <a (click)="contactClicked()" class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+        <a (click)="contactClicked()" class="nav-link" id="contact-tab" data-toggle="tab" href="#" role="tab"
           aria-controls="contact" aria-selected="false">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="medicalClicked()" class="nav-link" id="contact-tab" data-toggle="tab" href="#" role="tab"
+          aria-controls="contact" aria-selected="false">Medical Report</a>
       </li>
     </ul>
 
     <!--Parents Info-->
     <div style="margin-top: 35px; margin-bottom: 30px;" *ngIf="parentsTab">
       <div class="row">
+
         <!--Mother Table-->
         <table class="table col-6 table-borderless">
           <tbody>
@@ -304,6 +309,44 @@
               </td>
               <td style="width: 100%;"> <input style="width: 75%;" id="fatherJob" class="input-field form-control"
                   formControlName="fatherJob" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="width: 100%;">
+                <label class="" style="font-size: 1.625rem;margin-bottom: -5px;">Education</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="fatherDegree">Certificate</label>
+              </td>
+              <td style="width: 100%;">
+                <!-- <input style="width: 75%;" id="motherSchool" class="input-field form-control"
+                  formControlName="motherSchool" type="text" minlength="2"> -->
+                <select style="width: 75%;" id="fatherDegree" class="input-field form-control"
+                  formControlName="motherSchool" type="text">
+                  <option>Graduate</option>
+                  <option>Bachelor</option>
+                  <option>Master</option>
+                  <option>Doctor</option>
+                  <option>Other</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="fatherSchool">School</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="fatherSchool" class="input-field form-control"
+                  formControlName="fatherSchool" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="input-label" for="fatherGraduationYear">Year</label>
+              </td>
+              <td style="width: 100%;"> <input style="width: 75%;" id="fatherGraduationYear"
+                  class="input-field form-control" formControlName="fatherGraduationYear" type="date">
               </td>
             </tr>
 
@@ -483,9 +526,146 @@
       </div>
     </div>
 
+    <!--Medical Report-->
+    <div style="margin-top: 35px; margin-bottom: 30px;" *ngIf="medicalTab">
+      <div class="row">
+        <table class="table table-borderless col-6">
+          <tbody>
+            <tr>
+              <td colspan="2" style="width: 100%;">
+                <label class="" style="font-size: 1.625rem;">Medical Info</label>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100%;">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="hasMedicalCheckUpRoutine" type="checkbox"
+                    id="hasMedicalCheckUpRoutine" value="true">
+                  <label class="form-check-label" for="hasMedicalCheckUpRoutine">Routine CheckUp</label>
+                </div>
+                <div *ngIf="studentForm.get('hasMedicalCheckUpRoutine').errors && (studentForm.get('hasMedicalCheckUpRoutine').touched||
+              studentForm.get('hasMedicalCheckUpRoutine').dirty) " class="text-danger" required>
+                  <small *ngIf="studentForm.get('hasMedicalCheckUpRoutine').hasError('required')" class="text-danger">
+                    Required
+                  </small>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="width: 100%;">
+                <label class="" style="font-size: 1.625rem;">Vaccines</label>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 100%;">
+                <div formGroupName="studVaccines" class="">
+              <td>
+                <div class="form-check form-check-inline">
+                  <input #bfSchool class="form-check-input" formControlName="beforeTheSchool" type="checkbox"
+                    id="beforeTheSchool">
+                  <label class="form-check-label" for="beforeTheSchool">Before School</label>
+                </div>
+              </td>
+              <td>
+                <div class="form-check form-check-inline">
+                  <input #scVaccine class="form-check-input" formControlName="schoolVaccine" type="checkbox"
+                    id="schoolVaccine" value="true">
+                  <label class="form-check-label" for="schoolVaccine">School Vaccine</label>
+                </div>
+              </td>
+              <td>
+                <div class="form-check form-check-inline">
+                  <input #dtVaccine class="form-check-input" formControlName="dtVaccine" type="checkbox" id="dtVaccine"
+                    value="true">
+                  <label class="form-check-label" for="dtVaccine">DT Vaccine</label>
+                </div>
+              </td>
+              <td>
+                <div class="form-check form-check-inline">
+                  <input #others class="form-check-input" formControlName="others" type="checkbox" id="others"
+                    value="true">
+                  <label class="form-check-label" for="others">Others</label>
+                </div>
+              </td>
+            <tr>
+              <td>
+                <div *ngIf="bfSchool.checked">
+                  <select formControlName="beforeTheSchool">
+                    <option>Egypt</option>
+                    <option>Outside</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="scVaccine.checked">
+                  <select formControlName="schoolVaccine">
+                    <option>KG</option>
+                    <option>1</option>
+                    <option>7</option>
+                    <option>10</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="dtVaccine.checked">
+                  <select formControlName="dtVaccine">
+                    <option>2</option>
+                    <option>4</option>
+                  </select>
+                </div>
+              </td>
+              <td>
+                <div *ngIf="others.checked">
+                  <select formControlName="others">
+                    <option>German</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+      </div>
+
+      </td>
+      </tr>
+
+      </tbody>
+      </table>
+      <table class="table table-borderless col-6">
+        <tbody>
+          <tr>
+            <td colspan="2" style="width: 100%;">
+              <label class="" style="font-size: 1.625rem;">Chronic Diseases</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <select formControlName="studChronicDisease">
+                <option>Genetic</option>
+                <option>Cardiovascular </option>
+                <option>Allergic</option>
+                <option>Blood</option>
+                <option>Metabolic</option>
+                <option>Infectious</option>
+                <option>Neurological</option>
+                <option>Dermatological</option>
+                <option>Chest</option>
+              </select>
+            </td>
+            <td style="width: 100%;">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" formControlName="diseaseIsFamilyHistory" type="checkbox"
+                  id="diseaseIsFamilyHistory" value="true">
+                <label class="form-check-label" for="diseaseIsFamilyHistory">Family History</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
 
 
-    {{studentForm.value|json}}
-    <!-- <button type="button" [disabled]="studentForm.invalid" type="submit" class="btn btn-md btn-primary">Save</button> -->
-  </form>
+
+{{studentForm.value|json}}
+<!-- <button type="button" [disabled]="studentForm.invalid" type="submit" class="btn btn-md btn-primary">Save</button> -->
+</form>
 </div>

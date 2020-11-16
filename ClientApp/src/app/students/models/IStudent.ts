@@ -37,6 +37,13 @@ export interface IStudent {
     motherGraduationYear: string;
     motherAddress: string;
 
+    //Medical
+    hasMedicalCheckUpRoutine: boolean;
+    studVaccines;
+    studChronicDisease: string;
+    diseaseIsFamilyHistory: boolean;
+
+
     // schoolEmail: string;
     // mobile: string;
     // photoFileName: string;

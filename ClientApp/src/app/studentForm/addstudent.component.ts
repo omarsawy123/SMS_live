@@ -20,6 +20,7 @@ export class AddstudentComponent implements OnInit {
 
   parentsTab: boolean = true;
   contactTab: boolean = false;
+  medicalTab: boolean = false;
 
   student: IStudent;
   students: IStudent[];
@@ -52,6 +53,9 @@ export class AddstudentComponent implements OnInit {
       fatherName: ['', [Validators.required]],
       fatherJob: [''],
       fatherMobile: [''],
+      fatherSchool: [''],
+      fatherDegree: [''],
+      fatherGraduationYear: [''],
       fatherAddress: [''],
       motherName: ['', [Validators.required]],
       motherMobile: [''],
@@ -59,7 +63,16 @@ export class AddstudentComponent implements OnInit {
       motherSchool: [''],
       motherDegree: [''],
       motherGraduationYear: [''],
-      motherAddress: ['']
+      motherAddress: [''],
+      hasMedicalCheckUpRoutine: [false, Validators.required],
+      studVaccines: this.fb.group({
+        beforeTheSchool: [false],
+        schoolVaccine: [false],
+        dtVaccine: [false],
+        others: [false]
+      }),
+      studChronicDisease: [''],
+      diseaseIsFamilyHistory: ['']
     });
 
     this._services.getStudents().subscribe(data => this.students = data);
@@ -84,6 +97,7 @@ export class AddstudentComponent implements OnInit {
   parentsClicked() {
     this.parentsTab = true;
     this.contactTab = false;
+    this.medicalTab = false;
 
   }
 
@@ -91,6 +105,15 @@ export class AddstudentComponent implements OnInit {
   contactClicked() {
     this.parentsTab = false;
     this.contactTab = true;
+    this.medicalTab = false;
+
+  }
+
+
+  medicalClicked() {
+    this.parentsTab = false;
+    this.contactTab = false;
+    this.medicalTab = true;
   }
 
 
@@ -115,6 +138,11 @@ export class AddstudentComponent implements OnInit {
 
     return year + '-' + month + '-' + day
 
+  }
+
+
+  save(form) {
+    console.log(form.get(['studVaccines', 'beforeTheSchool']).value)
   }
 
 

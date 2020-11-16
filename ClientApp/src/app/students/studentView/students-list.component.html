@@ -1,7 +1,7 @@
 <div class=" container  section">
   <div class="">
 
-    
+
     <button [routerLink]="['/students/add']" routerLinkActive="router-link-active" type="button"
       class="btn btn-primary mb-4" style="float: right;">Add Student</button>
     <div class="row">
@@ -19,7 +19,7 @@
     </div>
 
 
-   
+
     <!--Table-->
     <table class="table table-striped table-bordered table-responsive">
       <thead class=" thead-dark">
@@ -40,7 +40,7 @@
         <ng-container *ngIf="students">
           <tr *ngFor="let stud of students" style="cursor: pointer;" (click)="OnStudentClick(stud.id)">
             <ng-container *ngIf="stud.class.toLowerCase().includes(header.toLowerCase())
-            &&stud.studName.toLowerCase().includes(searchTerm.toLowerCase())
+            &&(stud.studName.toLowerCase().includes(searchTerm.toLowerCase())||stud.id.toString().includes(searchTerm))
             &&((stud.class.toLowerCase().includes(selectedClass.toLowerCase())||selectedClass=='All'))">
               <th scope="row">
                 {{stud.id}}
